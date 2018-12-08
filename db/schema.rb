@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_164131) do
+ActiveRecord::Schema.define(version: 2018_12_05_092622) do
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "topic_id"
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "comment"
+    t.bigint "user_id"
+    t.bigint "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_comments_on_topic_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_favorites_on_topic_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -35,4 +47,8 @@ ActiveRecord::Schema.define(version: 2018_11_19_164131) do
     t.string "password_digest"
   end
 
+  add_foreign_key "comments", "topics"
+  add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "topics"
+  add_foreign_key "favorites", "users"
 end

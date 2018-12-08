@@ -18,6 +18,12 @@ class TopicsController < ApplicationController
   end
 end
 
+ def comment
+   @comment = Comment.new(comment: params[:comment], topic_id: params[:topic_id], user_id: params[:user_id])
+   @comment.save
+   redirect_to topics_path
+ end
+
   private
   def topic_params
     params.require(:topic).permit(:image, :description)

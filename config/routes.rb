@@ -9,9 +9,12 @@ Rails.application.routes.draw do
    delete '/logout', to: 'sessions#destroy'
 
   resources :users
-  resources :topics
+  resources :topics do
+  resources :comment
+  end
 
   get 'favorites/index'
   post '/favorites', to: 'favorites#create'
+  post "topics/comment" => "topics#comment"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
