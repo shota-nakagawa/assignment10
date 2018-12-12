@@ -1,6 +1,16 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all.includes(:favorite_users)
+    @topics = Topic.all.includes([:favorite_users, :comment_users])
+  end
+
+  def show
+    @topics = Topic.all.includes([:favorite_users, :comment_users])
+    @favorites_count = Favorite.where(topic_id: topic.id).count
+    #@topic = Topic.find(params[:id])
+  end
+
+  def edit
+   @topic = Topic.find_by(user_id: params[:user_id])
   end
 
   def new

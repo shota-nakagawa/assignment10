@@ -5,7 +5,6 @@ h1, h2 {
 .text-white {
   color: #fff;
 }
-
 .btn-white {
   color: #fff;
   border: 1px solid #fff;
@@ -136,6 +135,13 @@ h1, h2 {
       width: 35px;
       height: 30px;
       margin-left: 20px;
+    }
+
+    .topic-index-icon-red{
+      background-color: red;
+        width: 35px;
+        height: 30px;
+        margin-left: 20px;
     }
   }
 }

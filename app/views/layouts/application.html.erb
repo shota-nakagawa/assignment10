@@ -21,7 +21,6 @@
          <% end %>
          <ul class="nav navbar-nav navbar-right">
            <% if logged_in? %>
-             html
              <li>
                <%= link_to favorites_index_path do %>
                  <%= image_tag "icons/heart.png" %>
@@ -46,11 +45,6 @@
              <li>
                <%= link_to login_path do %>
                  <%= image_tag "icons/login.png" %>
-               <% end %>
-             </li>
-             <li>
-               <%= link_to comment_path do %>
-                <%= image_tag "icons/comment.png" %>
                <% end %>
              </li>
            <% end %>
